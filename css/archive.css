@@ -1,0 +1,133 @@
+/* Archive Page Specific Styles */
+
+.archive-intro {
+    margin-bottom: 30px;
+    font-size: 1.1rem;
+}
+
+.archive-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 30px;
+    margin-top: 40px;
+}
+
+.archive-item {
+    background-color: #f9f9f9;
+    border: 1px solid #eaeaea;
+    transition: transform 0.3s, box-shadow 0.3s;
+    display: flex;
+    overflow: hidden;
+}
+
+.archive-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+}
+
+.archive-date {
+    background-color: var(--dark-blue);
+    color: white;
+    padding: 15px 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-width: 80px;
+}
+
+.month {
+    text-transform: uppercase;
+    font-size: 0.9rem;
+    font-weight: bold;
+}
+
+.day {
+    font-size: 1.8rem;
+    font-weight: bold;
+    line-height: 1;
+    margin: 5px 0;
+}
+
+.year {
+    font-size: 0.9rem;
+}
+
+.archive-info {
+    padding: 15px;
+    flex-grow: 1;
+}
+
+.archive-info h3 {
+    color: var(--dark-blue);
+    margin-bottom: 10px;
+    font-size: 1.2rem;
+}
+
+.archive-info p {
+    font-size: 0.9rem;
+    margin-bottom: 15px;
+    color: #555;
+}
+
+.archive-link {
+    display: inline-block;
+    text-decoration: none;
+    color: var(--teal);
+    font-weight: bold;
+    position: relative;
+    padding-left: 5px;
+    transition: color 0.3s;
+}
+
+.archive-link::before {
+    content: '→';
+    position: absolute;
+    left: -15px;
+    opacity: 0;
+    transition: opacity 0.3s, left 0.3s;
+}
+
+.archive-link:hover {
+    color: var(--gold);
+    padding-left: 15px;
+}
+
+.archive-link:hover::before {
+    opacity: 1;
+    left: 0;
+}
+
+/* Art deco corner decorations */
+.archive-item::before, .archive-item::after {
+    content: '';
+    position: absolute;
+    width: 10px;
+    height: 10px;
+    background-color: var(--gold);
+    opacity: 0;
+    transition: opacity 0.3s;
+}
+
+.archive-item:hover::before, .archive-item:hover::after {
+    opacity: 0.2;
+}
+
+.archive-item::before {
+    top: 5px;
+    right: 5px;
+    clip-path: polygon(100% 0, 0 0, 100% 100%);
+}
+
+.archive-item::after {
+    bottom: 5px;
+    left: 5px;
+    clip-path: polygon(0 100%, 100% 100%, 0 0);
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .archive-grid {
+        grid-template-columns: 1fr;
+    }
+}
