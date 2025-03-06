@@ -158,6 +158,24 @@ h2::after {
 .player-container {
     margin: 30px 0;
     border: 1px solid #eaeaea;
+    background-color: white;
+    padding: 20px;
+}
+
+/* Bandcamp specific styling */
+.bandcamp-tracks {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.track-embed {
+    margin-bottom: 15px;
+    transition: transform 0.2s ease;
+}
+
+.track-embed:hover {
+    transform: translateX(5px);
 }
 
 /* Art deco decorative elements */
