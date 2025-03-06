@@ -1,41 +1,21 @@
-/* Si Si Si Radio - Cultural Fusion Style */
+/* Si Si Si Radio - Minimalist Cultural Fusion Style */
 
-@import url('https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=Work+Sans:wght@900&family=Karla:wght@400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=Work+Sans:wght@400;700&display=swap');
 
 :root {
-    /* Jaipur-inspired colors */
-    --jaipur-pink: #EB5E55; /* Pink City */
-    --jaipur-saffron: #F18F01; /* Saffron/Turmeric */
-    --jaipur-blue: #006992; /* Blue pottery */
+    /* Cultural fusion color palette */
+    --jaipur-blue: #006992;
+    --peru-gold: #DAA520;
+    --mexico-pink: #E63946;
+    --mcm-teal: #3CBBB1;
+    --future-purple: #5E2CA5;
     
-    /* Mexico City colors */
-    --mexico-pink: #E63946; /* Mexican pink */
-    --mexico-terracotta: #C1521E; /* Terra cotta */
-    --mexico-turquoise: #1A936F; /* Turquoise */
-    
-    /* Peru-inspired colors */
-    --peru-red: #A22C29; /* Peruvian textiles */
-    --peru-gold: #DAA520; /* Ancient gold */
-    --peru-navy: #264653; /* Deep blue of mountains */
-    
-    /* Mid-century modern colors */
-    --mcm-teal: #3CBBB1; /* Mid-century teal */
-    --mcm-mustard: #ECA400; /* Mustard yellow */
-    --mcm-orange: #F26430; /* Burnt orange */
-    
-    /* South Asian futurism */
-    --future-purple: #5E2CA5; /* Deep purple */
-    --future-electric: #21D19F; /* Electric turquoise */
-    --future-gold: #FFD700; /* Metallic gold */
-    
-    /* Core colors for design system */
+    /* Core colors */
     --primary: var(--jaipur-blue);
-    --secondary: var(--peru-red);
-    --accent: var(--mcm-orange);
-    --highlight: var(--future-electric);
-    --dark: #1A1A1A;
-    --light: #F7F3E3;
-    --contrast: var(--mexico-pink);
+    --accent: var(--mexico-pink);
+    --background: #FFFFFF;
+    --text: #1A1A1A;
+    --light-bg: #F7F7F7;
 }
 
 * {
@@ -46,58 +26,36 @@
 
 body {
     font-family: 'Space Mono', monospace;
-    background-color: var(--light);
-    color: var(--dark);
-    line-height: 1.4;
-    overflow-x: hidden;
+    background-color: var(--background);
+    color: var(--text);
+    line-height: 1.5;
 }
 
 .container {
-    max-width: 1400px;
+    max-width: 1200px;
     margin: 0 auto;
     padding: 0 20px;
 }
 
-/* HEADER WITH SOUTH ASIAN FUTURISM */
+/* Header */
 header {
-    border-bottom: 4px solid var(--primary);
-    padding: 30px 0;
+    padding: 40px 0 20px;
     margin-bottom: 40px;
-    position: relative;
-    overflow: hidden;
-    background-color: var(--dark);
-    color: var(--light);
-}
-
-header::after {
-    content: "";
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-image: radial-gradient(circle at 10% 20%, var(--future-purple) 0%, transparent 30%),
-                    radial-gradient(circle at 90% 80%, var(--jaipur-pink) 0%, transparent 30%);
-    opacity: 0.15;
-    z-index: 0;
+    border-bottom: 3px solid var(--primary);
 }
 
 .logo {
     display: flex;
     align-items: center;
     margin-bottom: 20px;
-    position: relative;
-    z-index: 1;
 }
 
 .logo-design {
-    width: 60px;
-    height: 60px;
+    width: 40px;
+    height: 40px;
+    background-color: var(--primary);
     margin-right: 15px;
-    background: linear-gradient(135deg, var(--jaipur-saffron), var(--peru-red));
     position: relative;
-    border-radius: 50% 0 50% 50%;
-    transform: rotate(-15deg);
 }
 
 .logo-design::before {
@@ -105,36 +63,28 @@ header::after {
     position: absolute;
     top: 50%;
     left: 50%;
-    transform: translate(-50%, -50%) rotate(15deg);
-    color: var(--light);
+    transform: translate(-50%, -50%);
+    color: white;
     font-weight: bold;
-    font-size: 22px;
+    font-size: 16px;
 }
 
 h1 {
     font-family: 'Work Sans', sans-serif;
-    font-size: 3.5rem;
-    letter-spacing: -1px;
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--text);
     text-transform: uppercase;
-    color: var(--light);
-    line-height: 0.9;
-    transform: scaleY(1.1);
-    text-shadow: 3px 3px 0px var(--future-purple);
+    letter-spacing: 1px;
 }
 
 nav {
-    width: 100%;
-    overflow-x: auto;
-    white-space: nowrap;
-    padding-bottom: 10px;
-    position: relative;
-    z-index: 1;
+    margin-bottom: 10px;
 }
 
 nav ul {
     display: flex;
     list-style: none;
-    gap: 10px;
 }
 
 nav li {
@@ -143,14 +93,11 @@ nav li {
 
 nav a {
     text-decoration: none;
-    color: var(--light);
-    font-size: 1rem;
-    font-weight: bold;
+    color: var(--text);
+    font-size: 0.9rem;
     text-transform: uppercase;
     letter-spacing: 1px;
-    padding: 8px 12px;
-    border: 2px solid transparent;
-    transition: all 0.2s;
+    padding-bottom: 5px;
     position: relative;
 }
 
@@ -161,7 +108,7 @@ nav a::after {
     bottom: 0;
     height: 2px;
     width: 0;
-    background: var(--mcm-orange);
+    background: var(--accent);
     transition: width 0.3s ease;
 }
 
@@ -170,288 +117,120 @@ nav a:hover::after, nav a.active::after {
 }
 
 nav a:hover, nav a.active {
-    color: var(--mcm-orange);
+    color: var(--accent);
 }
 
-/* MAIN CONTENT WITH MID-CENTURY MODERN INFLUENCE */
+/* Main Content */
 main {
     padding: 20px 0;
 }
 
 .featured {
-    background-color: white;
-    padding: 30px;
-    position: relative;
     margin-bottom: 60px;
-    border: 2px solid var(--dark);
-    border-radius: 0 30px 0 0;
-    box-shadow: 8px 8px 0 var(--mcm-mustard);
-}
-
-.featured::before {
-    content: "";
-    position: absolute;
-    top: -15px;
-    left: 20px;
-    width: 60px;
-    height: 30px;
-    background-color: var(--mexico-pink);
-    clip-path: polygon(0% 0%, 100% 0%, 50% 100%);
-}
-
-.featured::after {
-    content: "";
-    position: absolute;
-    top: 15px;
-    right: -10px;
-    width: 20px;
-    height: 60%;
-    background: repeating-linear-gradient(
-        0deg,
-        var(--peru-gold),
-        var(--peru-gold) 5px,
-        transparent 5px,
-        transparent 10px
-    );
 }
 
 h2 {
     font-family: 'Work Sans', sans-serif;
-    font-size: 2.5rem;
-    margin-bottom: 15px;
-    color: var(--dark);
-    text-transform: uppercase;
-    line-height: 1;
-    border-bottom: 4px dotted var(--mcm-teal);
-    display: inline-block;
-    padding-bottom: 5px;
+    font-size: 1.8rem;
+    margin-bottom: 10px;
+    color: var(--text);
 }
 
 .date-display {
     font-style: italic;
     margin-bottom: 30px;
-    color: var(--peru-navy);
-    font-size: 1.1rem;
-    padding-bottom: 10px;
-    display: inline-block;
+    color: var(--text);
+    opacity: 0.7;
+    font-size: 0.9rem;
 }
 
 .player-container {
     margin: 30px 0;
-    border: 2px solid var(--dark);
-    position: relative;
-    background-color: white;
-    padding: 30px;
-    border-radius: 0 0 0 30px;
+    border: 1px solid #EEEEEE;
+    padding: 20px;
+    background-color: var(--light-bg);
 }
 
-.player-container::after {
-    content: "";
-    position: absolute;
-    bottom: -10px;
-    right: -10px;
-    width: 70%;
-    height: 70%;
-    background: linear-gradient(45deg, var(--mexico-turquoise), var(--jaipur-blue));
-    z-index: -1;
-    border-radius: 0 0 30px 0;
-}
-
-/* DESCRIPTION WITH PERUVIAN TEXTILE INFLUENCE */
+/* Description */
 .description {
-    padding: 40px;
-    background-color: white;
-    position: relative;
+    padding: 20px;
     margin-bottom: 40px;
-    border-left: 15px solid var(--peru-red);
-}
-
-.description::before {
-    content: "";
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 8px;
-    background: repeating-linear-gradient(
-        90deg,
-        var(--jaipur-saffron),
-        var(--jaipur-saffron) 15px,
-        var(--mcm-teal) 15px,
-        var(--mcm-teal) 30px
-    );
+    background-color: var(--light-bg);
+    border-left: 5px solid var(--mcm-teal);
 }
 
 h3 {
-    font-family: 'Karla', sans-serif;
-    font-size: 1.8rem;
-    margin-bottom: 20px;
-    color: var(--mexico-terracotta);
-    position: relative;
-    display: inline-block;
-}
-
-h3::after {
-    content: '';
-    position: absolute;
-    width: 100%;
-    height: 8px;
-    bottom: 0;
-    left: 0;
-    background-color: var(--future-electric);
-    z-index: -1;
-    opacity: 0.3;
+    font-family: 'Work Sans', sans-serif;
+    font-size: 1.3rem;
+    margin-bottom: 15px;
+    color: var(--primary);
 }
 
 .description p {
-    font-family: 'Karla', sans-serif;
-    font-size: 1.1rem;
+    font-family: 'Space Mono', monospace;
+    font-size: 0.95rem;
     line-height: 1.6;
-    position: relative;
-    z-index: 1;
 }
 
-/* South Asian Futurism Pattern */
-.description::after {
-    content: "";
-    position: absolute;
-    bottom: 20px;
-    right: 20px;
-    width: 100px;
-    height: 100px;
-    background-image: radial-gradient(
-        circle,
-        var(--future-purple) 2px,
-        transparent 2px
-    );
-    background-size: 15px 15px;
-    opacity: 0.2;
-    z-index: 0;
-}
-
-/* FOOTER WITH JAIPUR ARCHITECTURE INSPIRATION */
+/* Footer */
 footer {
     margin-top: 80px;
+    border-top: 3px solid var(--primary);
+    padding-top: 30px;
     text-align: center;
-    position: relative;
-    padding-top: 60px;
-}
-
-.footer-pattern {
-    height: 40px;
-    position: relative;
-    background: var(--jaipur-blue);
-    margin-bottom: 0;
-}
-
-.footer-pattern::before {
-    content: "";
-    position: absolute;
-    top: -20px;
-    left: 0;
-    width: 100%;
-    height: 20px;
-    background-image: 
-        radial-gradient(
-            circle at 50% 100%,
-            transparent 0,
-            transparent 15px,
-            var(--jaipur-blue) 15px
-        );
-    background-size: 40px 20px;
-    background-repeat: repeat-x;
 }
 
 .footer-content {
-    padding: 30px 20px;
-    background-color: var(--jaipur-blue);
-    color: var(--light);
-    position: relative;
-    overflow: hidden;
-}
-
-.footer-content::before {
-    content: "";
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-image: 
-        radial-gradient(circle at 10% 20%, rgba(255,255,255,0.1) 0%, transparent 50%),
-        radial-gradient(circle at 90% 80%, rgba(255,255,255,0.1) 0%, transparent 50%);
-    z-index: 0;
+    padding: 20px;
 }
 
 .footer-content p {
     margin-bottom: 10px;
-    position: relative;
-    z-index: 1;
+    font-size: 0.9rem;
+    color: var(--text);
+    opacity: 0.8;
 }
 
-/* ARCHIVE PAGE WITH MEXICO CITY INFLUENCES */
+/* Archive Page */
 .archive-intro {
-    font-family: 'Karla', sans-serif;
     margin-bottom: 40px;
-    font-size: 1.2rem;
+    font-size: 0.95rem;
     max-width: 700px;
-    position: relative;
-    padding-left: 20px;
-    border-left: 5px solid var(--mexico-pink);
 }
 
 .archive-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
-    gap: 40px;
-    margin-top: 40px;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 30px;
+    margin-top: 30px;
 }
 
 .archive-item {
-    background-color: white;
-    transition: transform 0.3s, box-shadow 0.3s;
-    display: block;
-    overflow: hidden;
-    position: relative;
-    border-radius: 0 15px 0 15px;
-    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    background-color: var(--light-bg);
+    border-bottom: 3px solid var(--peru-gold);
+    transition: transform 0.3s;
 }
 
 .archive-item:hover {
     transform: translateY(-5px);
-    box-shadow: 6px 6px 0 var(--mcm-teal);
 }
 
 .archive-date {
-    background: linear-gradient(135deg, var(--mexico-pink), var(--mexico-terracotta));
+    padding: 15px;
+    background-color: var(--primary);
     color: white;
-    padding: 20px 15px;
-    font-family: 'Space Mono', monospace;
     text-align: center;
-    position: relative;
-    overflow: hidden;
-}
-
-.archive-date::after {
-    content: "";
-    position: absolute;
-    bottom: 0;
-    right: 0;
-    width: 40px;
-    height: 40px;
-    background-image: radial-gradient(circle, rgba(255,255,255,0.2) 2px, transparent 2px);
-    background-size: 8px 8px;
 }
 
 .month {
     text-transform: uppercase;
-    font-size: 1rem;
+    font-size: 0.8rem;
     font-weight: bold;
     display: block;
 }
 
 .day {
-    font-size: 2.5rem;
+    font-size: 2rem;
     font-weight: bold;
     line-height: 1;
     margin: 5px 0;
@@ -459,77 +238,40 @@ footer {
 }
 
 .year {
-    font-size: 1rem;
+    font-size: 0.8rem;
     display: block;
 }
 
 .archive-info {
-    padding: 25px;
-    border-top: 3px solid var(--light);
-    position: relative;
-}
-
-.archive-info::before {
-    content: "";
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 3px;
-    background: linear-gradient(90deg, var(--mcm-teal), var(--future-electric));
+    padding: 20px;
 }
 
 .archive-info h3 {
-    color: var(--dark);
-    margin-bottom: 15px;
-    font-size: 1.5rem;
-    font-weight: 900;
+    margin-bottom: 10px;
+    font-size: 1.2rem;
 }
 
 .archive-info p {
     font-size: 0.9rem;
-    margin-bottom: 20px;
-    color: var(--dark);
-    opacity: 0.7;
-    font-family: 'Karla', sans-serif;
+    margin-bottom: 15px;
+    opacity: 0.8;
 }
 
 .archive-link {
     display: inline-block;
     text-decoration: none;
-    color: var(--dark);
+    color: var(--accent);
     font-weight: bold;
-    padding: 8px 0;
-    text-transform: uppercase;
     font-size: 0.8rem;
     letter-spacing: 1px;
-    transition: all 0.3s;
-    position: relative;
-}
-
-.archive-link::after {
-    content: '';
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    width: 100%;
-    height: 2px;
-    background-color: var(--mcm-orange);
-    transform-origin: right;
-    transform: scaleX(0);
-    transition: transform 0.3s ease;
-}
-
-.archive-link:hover::after {
-    transform-origin: left;
-    transform: scaleX(1);
+    text-transform: uppercase;
 }
 
 .archive-link:hover {
-    color: var(--mcm-orange);
+    text-decoration: underline;
 }
 
-/* ABOUT PAGE STYLES WITH SOUTH ASIAN FUTURISM */
+/* About Page */
 .about-content {
     display: grid;
     grid-template-columns: 1fr 2fr;
@@ -544,26 +286,7 @@ footer {
 .placeholder-image {
     width: 100%;
     aspect-ratio: 1/1;
-    background: linear-gradient(45deg, var(--jaipur-blue), var(--future-purple));
-    position: relative;
-    overflow: hidden;
-    border-radius: 50% 0 50% 50%;
-    transform: rotate(-5deg);
-}
-
-.image-pattern {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: 
-        radial-gradient(circle at 30% 30%, var(--future-gold) 0, var(--future-gold) 3px, transparent 3px),
-        radial-gradient(circle at 70% 70%, var(--future-gold) 0, var(--future-gold) 3px, transparent 3px),
-        radial-gradient(circle at 30% 70%, var(--future-gold) 0, var(--future-gold) 3px, transparent 3px),
-        radial-gradient(circle at 70% 30%, var(--future-gold) 0, var(--future-gold) 3px, transparent 3px);
-    background-size: 30px 30px;
-    opacity: 0.3;
+    background-color: var(--future-purple);
 }
 
 .placeholder-image::after {
@@ -571,47 +294,38 @@ footer {
     position: absolute;
     top: 50%;
     left: 50%;
-    transform: translate(-50%, -50%) rotate(5deg);
-    color: var(--light);
-    font-size: 2rem;
+    transform: translate(-50%, -50%);
+    color: white;
+    font-size: 1.5rem;
     font-weight: bold;
-    letter-spacing: 5px;
-}
-
-.about-text {
-    font-family: 'Karla', sans-serif;
+    letter-spacing: 3px;
 }
 
 .about-text p {
     margin-bottom: 20px;
-    font-size: 1.1rem;
+    font-size: 0.95rem;
     line-height: 1.6;
 }
 
 .about-text a {
     color: var(--accent);
     text-decoration: none;
-    border-bottom: 2px solid var(--accent);
-    font-weight: bold;
+    border-bottom: 1px solid var(--accent);
 }
 
 .about-text a:hover {
-    background-color: var(--accent);
-    color: white;
+    border-bottom: none;
 }
 
 .track-notes {
     margin-top: 30px;
-    background-color: var(--light);
-    padding: 30px;
-    border-left: 4px solid var(--accent);
+    padding: 20px;
+    background-color: var(--light-bg);
 }
 
 .track-notes h4 {
-    font-family: 'Work Sans', sans-serif;
-    font-size: 1.3rem;
-    margin-bottom: 20px;
-    text-transform: uppercase;
+    font-size: 1.1rem;
+    margin-bottom: 15px;
 }
 
 .track-notes ol {
@@ -619,35 +333,24 @@ footer {
 }
 
 .track-notes li {
-    margin-bottom: 15px;
-    font-family: 'Karla', sans-serif;
+    margin-bottom: 10px;
+    font-size: 0.9rem;
 }
 
 .back-link {
     display: inline-block;
     margin-bottom: 20px;
     text-decoration: none;
-    color: var(--dark);
-    opacity: 0.7;
-    font-weight: bold;
-    transition: color 0.3s;
+    color: var(--text);
+    font-size: 0.9rem;
 }
 
 .back-link:hover {
     color: var(--accent);
-    opacity: 1;
 }
 
-.archive-header {
-    margin-bottom: 30px;
-}
-
-/* RESPONSIVE DESIGN */
+/* Responsive Design */
 @media (max-width: 768px) {
-    h1 {
-        font-size: 2.5rem;
-    }
-    
     .about-content {
         grid-template-columns: 1fr;
     }
@@ -655,25 +358,4 @@ footer {
     .archive-grid {
         grid-template-columns: 1fr;
     }
-    
-    .featured, .description {
-        padding: 20px;
-    }
-}
-
-/* CUSTOM BANDCAMP PLAYER STYLING */
-.bandcamp-tracks {
-    display: flex;
-    flex-direction: column;
-    gap: 15px;
-}
-
-.track-embed {
-    margin-bottom: 15px;
-    transition: transform 0.2s ease;
-    position: relative;
-}
-
-.track-embed:hover {
-    transform: translateX(5px);
 }
