@@ -30,35 +30,9 @@
                 <h2>Archive Collection</h2>
                 <p class="archive-intro">Browse our weekly selections from past shows. Each week features carefully curated tracks from different eras and genres.</p>
                 
-                <div class="archive-grid">
-                    <!-- Archive entries in reverse chronological order -->
-                    <div class="archive-item">
-                        <div class="archive-date">
-                            <span class="month">Feb</span>
-                            <span class="day">26</span>
-                            <span class="year">2025</span>
-                        </div>
-                        <div class="archive-info">
-                            <h3>Ten Ragas to a Disco Beat</h3>
-                            <p>Charanjit Singh's groundbreaking 1982 album that fused Indian classical music with electronic disco.</p>
-                            <a href="2025-02-26.html" class="archive-link">Listen</a>
-                        </div>
-                    </div>
-                    
-                    <div class="archive-item">
-                        <div class="archive-date">
-                            <span class="month">Feb</span>
-                            <span class="day">19</span>
-                            <span class="year">2025</span>
-                        </div>
-                        <div class="archive-info">
-                            <h3>Eastern Sounds</h3>
-                            <p>Yusef Lateef's pioneering 1962 album fusing jazz with Eastern musical traditions.</p>
-                            <a href="2025-02-19.html" class="archive-link">Listen</a>
-                        </div>
-                    </div>
-                    
-                    <!-- Add more archive items as you create weekly shows -->
+                <div class="archive-grid" id="archive-grid">
+                    <!-- Archive entries will be loaded dynamically -->
+                    <div class="loading-message">Loading archives...</div>
                 </div>
             </section>
         </main>
@@ -72,5 +46,53 @@
     </div>
     
     <script src="../js/script.js"></script>
+    <script>
+    // Archive index loader
+    document.addEventListener('DOMContentLoaded', function() {
+        fetch('../data/tracks.json')
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error(`HTTP error! Status: ${response.status}`);
+                }
+                return response.json();
+            })
+            .then(data => {
+                const archiveGrid = document.getElementById('archive-grid');
+                
+                // Clear loading message
+                archiveGrid.innerHTML = '';
+                
+                // Add each archive item to the grid
+                data.archive.forEach(item => {
+                    const date = new Date(item.date);
+                    const month = date.toLocaleString('en-US', { month: 'short' });
+                    const day = date.getDate();
+                    const year = date.getFullYear();
+                    
+                    const archiveItem = document.createElement('div');
+                    archiveItem.className = 'archive-item';
+                    archiveItem.innerHTML = `
+                        <div class="archive-date">
+                            <span class="month">${month}</span>
+                            <span class="day">${day}</span>
+                            <span class="year">${year}</span>
+                        </div>
+                        <div class="archive-info">
+                            <h3>${item.title}</h3>
+                            <p>${item.artist} - ${item.description.substring(0, 100)}...</p>
+                            <a href="entry.html?date=${item.date}" class="archive-link">Listen</a>
+                        </div>
+                    `;
+                    
+                    archiveGrid.appendChild(archiveItem);
+                });
+            })
+            .catch(error => {
+                console.error('Error loading archives:', error);
+                document.getElementById('archive-grid').innerHTML = 
+                    '<div class="error-message">Could not load archives. Please try again later.</div>';
+            });
+    });
+    </script>
 </body>
 </html>
