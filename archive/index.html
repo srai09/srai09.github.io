@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Archives | Si Si Si Radio</title>
     <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/visualizer.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=Work+Sans:wght@400;700&display=swap" rel="stylesheet">
@@ -31,34 +32,8 @@
                 <p class="archive-intro">Browse our weekly selections from past shows. Each week features carefully curated tracks from different eras and genres.</p>
                 
                 <div class="archive-grid">
-                    <!-- Archive entries in reverse chronological order -->
-                    <div class="archive-item">
-                        <div class="archive-date">
-                            <span class="month">Feb</span>
-                            <span class="day">26</span>
-                            <span class="year">2025</span>
-                        </div>
-                        <div class="archive-info">
-                            <h3>Ten Ragas to a Disco Beat</h3>
-                            <p>Charanjit Singh's groundbreaking 1982 album that fused Indian classical music with electronic disco.</p>
-                            <a href="2025-02-26.html" class="archive-link">Listen</a>
-                        </div>
-                    </div>
-                    
-                    <div class="archive-item">
-                        <div class="archive-date">
-                            <span class="month">Feb</span>
-                            <span class="day">19</span>
-                            <span class="year">2025</span>
-                        </div>
-                        <div class="archive-info">
-                            <h3>Eastern Sounds</h3>
-                            <p>Yusef Lateef's pioneering 1962 album fusing jazz with Eastern musical traditions.</p>
-                            <a href="2025-02-19.html" class="archive-link">Listen</a>
-                        </div>
-                    </div>
-                    
-                    <!-- Add more archive items as you create weekly shows -->
+                    <!-- Archive entries will be loaded dynamically from tracks.json -->
+                    <div class="loading-placeholder">Loading archives...</div>
                 </div>
             </section>
         </main>
@@ -72,5 +47,6 @@
     </div>
     
     <script src="../js/script.js"></script>
+    <script src="../js/tracks-loader.js"></script>
 </body>
 </html>
