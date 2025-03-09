@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Archive | Si Si Si Radio</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=Work+Sans:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <div class="logo">
+                <div class="logo-design"></div>
+                <h1>Si Si Si Radio</h1>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="../index.html">This Week</a></li>
+                    <li><a href="index.html" class="active">Archives</a></li>
+                    <li><a href="../about.html">About</a></li>
+                </ul>
+            </nav>
+        </header>
+
+        <main>
+            <section class="featured">
+                <div class="archive-header">
+                    <a href="index.html" class="back-link">← Back to Archives</a>
+                    <h2 id="title">Loading...</h2>
+                    <div class="date-display" id="date-range">Loading...</div>
+                </div>
+                
+                <div class="player-container" id="player">
+                    <div class="loading-message">Loading player...</div>
+                </div>
+            </section>
+            
+            <section class="description">
+                <h3>About This Selection</h3>
+                <p id="description">Loading description...</p>
+            </section>
+        </main>
+
+        <footer>
+            <div class="footer-content">
+                <p>&copy; 2025 Si Si Si Radio. All rights reserved.</p>
+                <p>Updated weekly every Wednesday.</p>
+            </div>
+        </footer>
+    </div>
+    
+    <script src="../js/script.js"></script>
+    <script>
+    // Dynamic archive entry loader
+    document.addEventListener('DOMContentLoaded', function() {
+        // Get the date from the URL parameter
+        const urlParams = new URLSearchParams(window.location.search);
+        const entryDate = urlParams.get('date');
+        
+        if (!entryDate) {
+            document.getElementById('title').textContent = 'Entry not found';
+            document.getElementById('description').textContent = 'No date specified. Please return to the archives and select an entry.';
+            document.getElementById('player').innerHTML = '<div class="error-message">No content to display</div>';
+            return;
+        }
+        
+        fetch('../data/tracks.json')
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error(`HTTP error! Status: ${response.status}`);
+                }
+                return response.json();
+            })
+            .then(data => {
+                // Find the matching archive entry
+                const archiveEntry = data.archive.find(item => item.date === entryDate);
+                
+                if (!archiveEntry) {
+                    throw new Error(`Archive entry not found for date: ${entryDate}`);
+                }
+                
+                // Update page title
+                document.title = `${archiveEntry.title} | Si Si Si Radio Archive`;
+                
+                // Update content
+                document.getElementById('title').textContent = archiveEntry.title;
+                document.getElementById('player').innerHTML = archiveEntry.embed;
+                document.getElementById('description').textContent = archiveEntry.description;
+                
+                // Format date range
+                const date = new Date(archiveEntry.date);
+                const endDate = new Date(date);
+                endDate.setDate(date.getDate() + 6);
+                
+                const formatOptions = { month: 'long', day: 'numeric' };
+                const startStr = date.toLocaleDateString('en-US', formatOptions);
+                const endStr = endDate.toLocaleDateString('en-US', formatOptions);
+                const year = endDate.getFullYear();
+                
+                document.getElementById('date-range').textContent = 
+                    `${startStr} - ${endStr}, ${year}`;
+            })
+            .catch(error => {
+                console.error('Error loading archive entry:', error);
+                document.getElementById('title').textContent = 'Error';
+                document.getElementById('description').textContent = 
+                    `Could not load this archive entry. ${error.message}`;
+                document.getElementById('player').innerHTML = 
+                    '<div class="error-message">Content unavailable</div>';
+            });
+    });
+    </script>
+</body>
+</html>
