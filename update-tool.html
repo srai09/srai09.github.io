@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Si Si Si Radio Update Tool</title>
+    <style>
+        body { font-family: sans-serif; max-width: 800px; margin: 0 auto; padding: 20px; }
+        label { display: block; margin-top: 15px; font-weight: bold; }
+        input, textarea { width: 100%; padding: 8px; margin-top: 5px; }
+        textarea { height: 150px; }
+        button { margin-top: 20px; padding: 10px 15px; background: #006992; color: white; border: none; cursor: pointer; }
+        #result { margin-top: 20px; padding: 15px; border: 1px solid #ddd; display: none; }
+        .code { background: #f5f5f5; padding: 15px; overflow-x: auto; font-family: monospace; }
+    </style>
+</head>
+<body>
+    <h1>Si Si Si Radio Track Update Tool</h1>
+    <p>This tool helps you update the tracks.json file without manually escaping quotes in the embed code.</p>
+    
+    <form id="updateForm">
+        <label for="date">Date (YYYY-MM-DD):</label>
+        <input type="date" id="date" required>
+        
+        <label for="title">Album Title:</label>
+        <input type="text" id="title" required>
+        
+        <label for="artist">Artist:</label>
+        <input type="text" id="artist" required>
+        
+        <label for="embed">Embed Code (paste directly from Bandcamp/YouTube):</label>
+        <textarea id="embed" required></textarea>
+        
+        <label for="description">Description:</label>
+        <textarea id="description" required></textarea>
+        
+        <button type="submit">Generate JSON</button>
+    </form>
+    
+    <div id="result">
+        <h2>Updated JSON</h2>
+        <p>Copy this into your tracks.json file:</p>
+        <div class="code" id="jsonOutput"></div>
+    </div>
+    
+    <script>
+        document.getElementById('updateForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Get values from form
+            const date = document.getElementById('date').value;
+            const title = document.getElementById('title').value;
+            const artist = document.getElementById('artist').value;
+            const embed = document.getElementById('embed').value;
+            const description = document.getElementById('description').value;
+            
+            // Create JSON object
+            const newTrack = {
+                date,
+                title,
+                artist,
+                embed,
+                description
+            };
+            
+            // Create JSON string with proper escaping
+            const jsonStr = JSON.stringify(newTrack, null, 2);
+            
+            // Display the result
+            document.getElementById('jsonOutput').textContent = 
+                '{\n  "currentWeek": ' + jsonStr + ',\n  "archive": [\n    /* Move previous currentWeek here */\n    /* Rest of archive... */\n  ]\n}';
+            
+            document.getElementById('result').style.display = 'block';
+        });
+    </script>
+</body>
+</html>
