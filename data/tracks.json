@@ -1,0 +1,25 @@
+{
+  "currentWeek": {
+    "date": "2025-03-05",
+    "title": "Blue Latin",
+    "artist": "Gerardo Frisina",
+    "embed": "<iframe style=\"border: 0; width: 100%; height: 470px;\" src=\"https://bandcamp.com/EmbeddedPlayer/album=467150494/size=large/bgcol=f7f7f7/linkcol=e63946/tracklist=false/transparent=true/\" seamless><a href=\"https://gerardo-frisina.bandcamp.com/album/blue-latin\">Blue Latin by Gerardo Frisina</a></iframe>",
+    "description": "This week we're exploring the sounds of early electronic experimentation with a focus on compositions that influenced modern ambient music. From pioneering synthesizer work to revolutionary sampling techniques, these seven tracks showcase the evolution of electronic soundscapes."
+  },
+  "archive": [
+    {
+      "date": "2025-02-26",
+      "title": "Ten Ragas to a Disco Beat",
+      "artist": "Charanjit Singh",
+      "embed": "<div class=\"video-container\" style=\"position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; max-width: 100%;\"><iframe style=\"position: absolute; top: 0; left: 0; width: 100%; height: 100%;\" src=\"https://www.youtube.com/embed/as0uNNnkR_8?si=2Vq-1tM5WNXguwKf\" title=\"YouTube video player\" frameborder=\"0\" allow=\"accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share\" referrerpolicy=\"strict-origin-when-cross-origin\" allowfullscreen></iframe></div>",
+      "description": "\"Ten Ragas to a Disco Beat\" is a 1982 album by Indian musician Charanjit Singh that uniquely blends traditional Indian ragas with electronic disco music. Utilizing instruments like the Roland TB-303 bass synthesizer, TR-808 drum machine, and Jupiter-8 synthesizer, Singh crafted a sound that many consider a precursor to acid house music, predating the genre's rise in the late 1980s. Initially overlooked, the album gained recognition in the 21st century for its innovative fusion of classical Indian music and electronic dance rhythms."
+    },
+    {
+      "date": "2025-02-19",
+      "title": "Eastern Sounds",
+      "artist": "Yusef Lateef",
+      "embed": "<iframe style=\"border: 0; width: 100%; height: 470px;\" src=\"https://bandcamp.com/EmbeddedPlayer/album=1529149813/size=large/bgcol=f7f7f7/linkcol=e63946/tracklist=false/track=654160980/transparent=true/\" seamless><a href=\"https://yuseflateef.bandcamp.com/album/eastern-sounds\">Eastern Sounds by Yusef Lateef</a></iframe>",
+      "description": "Eastern Sounds is a studio album by the jazz multi-instrumentalist and composer Yusef Lateef. It was released in April 1962 through Prestige Records. This groundbreaking album reflects Lateef's exploration of Eastern musical traditions, combining them with Western jazz idioms to create a unique sonic landscape. His innovative approach to composition and instrumentation established him as one of the pioneers in world music fusion, decades before the term was widely used."
+    }
+  ]
+}
