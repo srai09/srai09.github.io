@@ -57,7 +57,7 @@
     <script>
     // Simple inline loader for the homepage
     document.addEventListener('DOMContentLoaded', function() {
-        fetch('./data/tracks.json')
+        fetch('/data/tracks.json')
             .then(response => {
                 if (!response.ok) {
                     throw new Error(`HTTP error! Status: ${response.status}`);
