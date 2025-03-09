@@ -27,10 +27,10 @@
 
         <main>
             <section class="featured">
-                <h2>This Week's Selection</h2>
-                <div class="date-display">March 5 - March 11, 2025</div>
+                <h2 id="title">This Week's Selection</h2>
+                <div class="date-display" id="date-range">March 5 - March 11, 2025</div>
                 
-                <div class="player-container">
+                <div class="player-container" id="player">
                     <iframe style="border: 0; width: 100%; height: 470px;" 
                     src="https://bandcamp.com/EmbeddedPlayer/album=467150494/size=large/bgcol=f7f7f7/linkcol=e63946/tracklist=false/transparent=true/" 
                     seamless>
@@ -41,7 +41,7 @@
             
             <section class="description">
                 <h3>About This Week's Selection</h3>
-                <p>Blue Latin takes classic jazz and shakes it up with Afro-Cuban, Brazilian, and Latin-jazz vibes — all wrapped in Frisina’s signature danceable style. It’s the perfect soundtrack for a packed dance floor or a solo groove session at home. With standout tracks like the rework of João Donato’s Naquela Base and the meditative, African-inspired Incanto, this album brings jazz right into the now.</p>
+                <p id="description">Blue Latin takes classic jazz and shakes it up with Afro-Cuban, Brazilian, and Latin-jazz vibes — all wrapped in Frisina's signature danceable style. It's the perfect soundtrack for a packed dance floor or a solo groove session at home. With standout tracks like the rework of João Donato's Naquela Base and the meditative, African-inspired Incanto, this album brings jazz right into the now.</p>
             </section>
         </main>
 
@@ -54,5 +54,52 @@
     </div>
     
     <script src="js/script.js"></script>
+    <script>
+    // Simple inline loader for the homepage
+    document.addEventListener('DOMContentLoaded', function() {
+        fetch('./data/tracks.json')
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error(`HTTP error! Status: ${response.status}`);
+                }
+                return response.json();
+            })
+            .then(data => {
+                // Update the page with current week's content
+                const current = data.currentWeek;
+                
+                // Update title if different than default
+                if (current.title !== "This Week's Selection") {
+                    document.getElementById('title').textContent = current.title;
+                }
+                
+                // Update player
+                document.getElementById('player').innerHTML = current.embed;
+                
+                // Update description
+                document.getElementById('description').textContent = current.description;
+                
+                // Update date range if needed
+                if (current.date) {
+                    const date = new Date(current.date);
+                    // Create end date (7 days later)
+                    const endDate = new Date(date);
+                    endDate.setDate(date.getDate() + 6);
+                    
+                    // Format them nicely
+                    const formatOptions = { month: 'long', day: 'numeric' };
+                    const startStr = date.toLocaleDateString('en-US', formatOptions);
+                    const endStr = endDate.toLocaleDateString('en-US', formatOptions);
+                    const year = endDate.getFullYear();
+                    
+                    document.getElementById('date-range').textContent = 
+                        `${startStr} - ${endStr}, ${year}`;
+                }
+            })
+            .catch(error => {
+                console.error('Error loading tracks data:', error);
+            });
+    });
+    </script>
 </body>
 </html>
