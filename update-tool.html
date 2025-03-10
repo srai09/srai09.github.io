@@ -3,58 +3,209 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Si Si Si Radio Update Tool</title>
+    <title>Si Si Si Radio JSON Helper</title>
     <style>
-        body { font-family: sans-serif; max-width: 800px; margin: 0 auto; padding: 20px; }
-        label { display: block; margin-top: 15px; font-weight: bold; }
-        input, textarea { width: 100%; padding: 8px; margin-top: 5px; }
-        textarea { height: 150px; }
-        button { margin-top: 20px; padding: 10px 15px; background: #006992; color: white; border: none; cursor: pointer; }
-        #result { margin-top: 20px; padding: 15px; border: 1px solid #ddd; display: none; }
-        .code { background: #f5f5f5; padding: 15px; overflow-x: auto; font-family: monospace; }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f7f7f7;
+        }
+        h1, h2 {
+            color: #006992;
+        }
+        .card {
+            background: white;
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 20px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        label {
+            display: block;
+            margin-top: 15px;
+            font-weight: bold;
+        }
+        input, textarea, select {
+            width: 100%;
+            padding: 10px;
+            margin-top: 5px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-family: inherit;
+            font-size: 16px;
+        }
+        textarea {
+            min-height: 120px;
+            font-family: monospace;
+        }
+        button {
+            background: #006992;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+            margin-top: 20px;
+        }
+        button:hover {
+            background: #005279;
+        }
+        .output {
+            background: #f1f1f1;
+            padding: 15px;
+            border-radius: 4px;
+            font-family: monospace;
+            white-space: pre-wrap;
+            overflow-x: auto;
+            margin-top: 20px;
+            display: none;
+        }
+        .info {
+            background-color: #e3f2fd;
+            border-left: 5px solid #2196f3;
+            padding: 15px;
+            margin-bottom: 20px;
+        }
+        .copy-btn {
+            background: #4CAF50;
+            margin-left: 10px;
+        }
+        .copy-btn:hover {
+            background: #3e8e41;
+        }
+        .tabs {
+            display: flex;
+            margin-bottom: 20px;
+        }
+        .tab {
+            padding: 10px 20px;
+            background: #ddd;
+            cursor: pointer;
+            border-radius: 4px 4px 0 0;
+            margin-right: 5px;
+        }
+        .tab.active {
+            background: white;
+            font-weight: bold;
+        }
+        .tab-content {
+            display: none;
+        }
+        .tab-content.active {
+            display: block;
+        }
     </style>
 </head>
 <body>
-    <h1>Si Si Si Radio Track Update Tool</h1>
-    <p>This tool helps you update the tracks.json file without manually escaping quotes in the embed code.</p>
+    <h1>Si Si Si Radio JSON Helper</h1>
     
-    <form id="updateForm">
-        <label for="date">Date (YYYY-MM-DD):</label>
-        <input type="date" id="date" required>
-        
-        <label for="title">Album Title:</label>
-        <input type="text" id="title" required>
-        
-        <label for="artist">Artist:</label>
-        <input type="text" id="artist" required>
-        
-        <label for="embed">Embed Code (paste directly from Bandcamp/YouTube):</label>
-        <textarea id="embed" required></textarea>
-        
-        <label for="description">Description:</label>
-        <textarea id="description" required></textarea>
-        
-        <button type="submit">Generate JSON</button>
-    </form>
+    <div class="info">
+        <p><strong>How to use:</strong> This tool helps you format your tracks.json file correctly, handling all the quote escaping for you. Just fill in the form, and the tool will generate properly formatted JSON.</p>
+    </div>
     
-    <div id="result">
-        <h2>Updated JSON</h2>
-        <p>Copy this into your tracks.json file:</p>
-        <div class="code" id="jsonOutput"></div>
+    <div class="tabs">
+        <div class="tab active" data-tab="new">Add New Track</div>
+        <div class="tab" data-tab="edit">Edit Existing JSON</div>
+    </div>
+    
+    <div class="tab-content active" id="new-tab">
+        <div class="card">
+            <h2>New Track Information</h2>
+            <form id="track-form">
+                <label for="date">Date:</label>
+                <input type="date" id="date" required>
+                
+                <label for="title">Album Title:</label>
+                <input type="text" id="title" required>
+                
+                <label for="artist">Artist:</label>
+                <input type="text" id="artist" required>
+                
+                <label for="embed">Embed Code (paste directly from Bandcamp/YouTube):</label>
+                <textarea id="embed" required placeholder="<iframe...></iframe>"></textarea>
+                
+                <label for="description">Album Description:</label>
+                <textarea id="description" required placeholder="Write a brief description of the album..."></textarea>
+                
+                <button type="submit">Generate JSON</button>
+            </form>
+        </div>
+        
+        <div class="card" id="result-card" style="display: none;">
+            <h2>JSON Output</h2>
+            <p>This is your properly formatted JSON. Copy and replace the entire tracks.json file with this content.</p>
+            <div class="output" id="output"></div>
+            <button id="copy-btn" class="copy-btn">Copy to Clipboard</button>
+        </div>
+    </div>
+    
+    <div class="tab-content" id="edit-tab">
+        <div class="card">
+            <h2>Edit Existing tracks.json</h2>
+            <p>Paste your current tracks.json file here:</p>
+            <textarea id="current-json" placeholder='{"currentWeek": {...}, "archive": [...]}'></textarea>
+            <button id="load-btn">Load JSON</button>
+            
+            <div id="edit-form-container" style="display: none;">
+                <h3>Current Week Data</h3>
+                <form id="edit-form">
+                    <label for="edit-date">Date:</label>
+                    <input type="date" id="edit-date" required>
+                    
+                    <label for="edit-title">Album Title:</label>
+                    <input type="text" id="edit-title" required>
+                    
+                    <label for="edit-artist">Artist:</label>
+                    <input type="text" id="edit-artist" required>
+                    
+                    <label for="edit-embed">Embed Code:</label>
+                    <textarea id="edit-embed" required></textarea>
+                    
+                    <label for="edit-description">Album Description:</label>
+                    <textarea id="edit-description" required></textarea>
+                    
+                    <button type="submit">Update JSON</button>
+                </form>
+            </div>
+        </div>
+        
+        <div class="card" id="edit-result-card" style="display: none;">
+            <h2>Updated JSON Output</h2>
+            <p>This is your updated JSON with the new values.</p>
+            <div class="output" id="edit-output"></div>
+            <button id="edit-copy-btn" class="copy-btn">Copy to Clipboard</button>
+        </div>
     </div>
     
     <script>
-        document.getElementById('updateForm').addEventListener('submit', function(e) {
+        // Tab switching
+        const tabs = document.querySelectorAll('.tab');
+        tabs.forEach(tab => {
+            tab.addEventListener('click', () => {
+                document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+                document.querySelectorAll('.tab-content').forEach(c => c.classList.remove('active'));
+                
+                tab.classList.add('active');
+                document.getElementById(`${tab.dataset.tab}-tab`).classList.add('active');
+            });
+        });
+        
+        // New track form
+        document.getElementById('track-form').addEventListener('submit', function(e) {
             e.preventDefault();
             
-            // Get values from form
             const date = document.getElementById('date').value;
             const title = document.getElementById('title').value;
             const artist = document.getElementById('artist').value;
             const embed = document.getElementById('embed').value;
             const description = document.getElementById('description').value;
             
-            // Create JSON object
+            // Create newTrack object
             const newTrack = {
                 date,
                 title,
@@ -63,15 +214,157 @@
                 description
             };
             
-            // Create JSON string with proper escaping
-            const jsonStr = JSON.stringify(newTrack, null, 2);
+            // Get the archive from existing tracks if available
+            let archive = [];
+            try {
+                const currentJson = localStorage.getItem('tracksJson');
+                if (currentJson) {
+                    const data = JSON.parse(currentJson);
+                    if (data.currentWeek) {
+                        archive = [data.currentWeek, ...(data.archive || [])];
+                    }
+                }
+            } catch (error) {
+                console.error('Error getting archive:', error);
+            }
+            
+            // Create the full JSON
+            const tracksJson = {
+                currentWeek: newTrack,
+                archive
+            };
+            
+            // Save to localStorage for potential future use
+            localStorage.setItem('tracksJson', JSON.stringify(tracksJson));
+            
+            // Format the JSON with pretty printing
+            const formattedJson = JSON.stringify(tracksJson, null, 2);
             
             // Display the result
-            document.getElementById('jsonOutput').textContent = 
-                '{\n  "currentWeek": ' + jsonStr + ',\n  "archive": [\n    /* Move previous currentWeek here */\n    /* Rest of archive... */\n  ]\n}';
-            
-            document.getElementById('result').style.display = 'block';
+            document.getElementById('output').textContent = formattedJson;
+            document.getElementById('result-card').style.display = 'block';
         });
+        
+        // Copy to clipboard
+        document.getElementById('copy-btn').addEventListener('click', function() {
+            const output = document.getElementById('output');
+            
+            // Create a temporary textarea
+            const textarea = document.createElement('textarea');
+            textarea.value = output.textContent;
+            document.body.appendChild(textarea);
+            
+            // Select and copy
+            textarea.select();
+            document.execCommand('copy');
+            
+            // Clean up
+            document.body.removeChild(textarea);
+            
+            // Provide feedback
+            const originalText = this.textContent;
+            this.textContent = 'Copied!';
+            setTimeout(() => {
+                this.textContent = originalText;
+            }, 2000);
+        });
+        
+        // Edit existing JSON
+        document.getElementById('load-btn').addEventListener('click', function() {
+            const jsonInput = document.getElementById('current-json').value;
+            
+            try {
+                const data = JSON.parse(jsonInput);
+                
+                // Save to localStorage
+                localStorage.setItem('tracksJson', JSON.stringify(data));
+                
+                // Fill the edit form with currentWeek data
+                if (data.currentWeek) {
+                    document.getElementById('edit-date').value = data.currentWeek.date || '';
+                    document.getElementById('edit-title').value = data.currentWeek.title || '';
+                    document.getElementById('edit-artist').value = data.currentWeek.artist || '';
+                    document.getElementById('edit-embed').value = data.currentWeek.embed || '';
+                    document.getElementById('edit-description').value = data.currentWeek.description || '';
+                    
+                    // Show the edit form
+                    document.getElementById('edit-form-container').style.display = 'block';
+                } else {
+                    alert('No currentWeek data found in the JSON.');
+                }
+            } catch (error) {
+                alert('Invalid JSON. Please check your input and try again.');
+                console.error('Error parsing JSON:', error);
+            }
+        });
+        
+        // Update JSON
+        document.getElementById('edit-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            try {
+                // Get the original data
+                const currentJson = localStorage.getItem('tracksJson');
+                if (!currentJson) {
+                    throw new Error('No JSON data found. Please load JSON first.');
+                }
+                
+                const data = JSON.parse(currentJson);
+                
+                // Archive the current week data
+                if (data.currentWeek) {
+                    if (!data.archive) {
+                        data.archive = [];
+                    }
+                    data.archive.unshift(data.currentWeek);
+                }
+                
+                // Create the new currentWeek
+                data.currentWeek = {
+                    date: document.getElementById('edit-date').value,
+                    title: document.getElementById('edit-title').value,
+                    artist: document.getElementById('edit-artist').value,
+                    embed: document.getElementById('edit-embed').value,
+                    description: document.getElementById('edit-description').value
+                };
+                
+                // Save the updated data
+                localStorage.setItem('tracksJson', JSON.stringify(data));
+                
+                // Format and display
+                const formattedJson = JSON.stringify(data, null, 2);
+                document.getElementById('edit-output').textContent = formattedJson;
+                document.getElementById('edit-result-card').style.display = 'block';
+            } catch (error) {
+                alert('Error updating JSON: ' + error.message);
+                console.error('Error updating JSON:', error);
+            }
+        });
+        
+        // Copy edited JSON
+        document.getElementById('edit-copy-btn').addEventListener('click', function() {
+            const output = document.getElementById('edit-output');
+            
+            const textarea = document.createElement('textarea');
+            textarea.value = output.textContent;
+            document.body.appendChild(textarea);
+            
+            textarea.select();
+            document.execCommand('copy');
+            
+            document.body.removeChild(textarea);
+            
+            const originalText = this.textContent;
+            this.textContent = 'Copied!';
+            setTimeout(() => {
+                this.textContent = originalText;
+            }, 2000);
+        });
+        
+        // Set today's date as default
+        const today = new Date();
+        const dateString = today.toISOString().split('T')[0];
+        document.getElementById('date').value = dateString;
     </script>
 </body>
 </html>
