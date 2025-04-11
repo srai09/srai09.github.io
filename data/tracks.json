@@ -1,12 +1,19 @@
 {
   "currentWeek": {
+    "date": "2025-04-11",
+    "title": "Egyptian Reggae / Carnaval De Jujuy",
+    "artist": "Pancho Acosta / Money Chicha",
+    "embed": "<iframe style=\"border: 0; width: 350px; height: 522px;\" src=\"https://bandcamp.com/EmbeddedPlayer/album=2697721661/size=large/bgcol=333333/linkcol=4ec5ec/transparent=true/\" seamless><a href=\"https://vampisoul.bandcamp.com/album/egyptian-reggae-carnaval-de-jujuy\">EGYPTIAN REGGAE / CARNAVAL DE JUJUY by PANCHO ACOSTA / MONEY CHICHA</a></iframe>",
+    "description": "Cumbia is a language, not a genre. On one side, Pancho Acosta takes Jonathan Richman's catchy 'Egyptian Reggae' and turns it into a fun, upbeat cumbia track with a lively beat and lots of accordion flair. Flip it over, and Austin's Money Chicha puts their own spin on Acosta's 'Carnaval de Jujuy', with electric guitars and deep basslines that make you want to move."
+  },
+  "archive": [
+    {
     "date": "2025-04-03",
     "title": "Ayo Ke Disco: Boogie, Pop & Funk from the South China Sea (1974-88)",
     "artist": "Various Artists",
     "embed": "<iframe style=\"border: 0; width: 350px; height: 786px;\" src=\"https://bandcamp.com/EmbeddedPlayer/album=52876698/size=large/bgcol=ffffff/linkcol=0687f5/transparent=true/\" seamless><a href=\"https://soundwayrecords.bandcamp.com/album/ayo-ke-disco-boogie-pop-funk-from-the-south-china-sea-1974-88\">Ayo Ke Disco: Boogie, Pop &amp; Funk from the South China Sea (1974-88) by Various Artists</a></iframe>",
     "description": "For Ayo Ke Disco (meaning ‘Let’s go to the disco’ in Indonesian), 10 rare tracks of disco-funk, psychedelic funk, synth, city pop, and Hindustani-Arabic rhythms were painstakingly licensed from local labels – forming a snapshot of the vibrant discotheques and live scenes across Indonesia, Singapore, Thailand, Malaysia, Hong Kong and the Philippines."
-  },
-  "archive": [
+    },
     {
     "date": "2025-03-27",
     "title": "Al Hadaoui",
