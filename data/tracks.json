@@ -1,12 +1,19 @@
-{
+  {
   "currentWeek": {
+    "date": "2025-04-17",
+    "title": "Don't Turn The Bass Down (with Azahriah)",
+    "artist": "L'Entourloop",
+    "embed": "<iframe style=\"border: 0; width: 350px; height: 442px;\" src=\"https://bandcamp.com/EmbeddedPlayer/track=4053926508/size=large/bgcol=333333/linkcol=0f91ff/tracklist=false/transparent=true/\" seamless><a href=\"https://lentourloop1.bandcamp.com/track/dont-turn-the-bass-down-with-azahriah\">Don&#39;t Turn The Bass Down (with Azahriah) by L&#39;Entourloop</a></iframe>",
+    "description": "Single from L’Entourloop “Don’t Turn the Bass Down,” featuring Hungarian songwriter and YouTuber Azahriah. \nInspired by reggae legends, L’Entourloop pays homage to reggae, dancehall, and hip-hop culture."
+  },
+  "archive": [
+  {
     "date": "2025-04-11",
     "title": "Egyptian Reggae / Carnaval De Jujuy",
     "artist": "Pancho Acosta / Money Chicha",
     "embed": "<iframe style=\"border: 0; width: 350px; height: 522px;\" src=\"https://bandcamp.com/EmbeddedPlayer/album=2697721661/size=large/bgcol=333333/linkcol=4ec5ec/transparent=true/\" seamless><a href=\"https://vampisoul.bandcamp.com/album/egyptian-reggae-carnaval-de-jujuy\">EGYPTIAN REGGAE / CARNAVAL DE JUJUY by PANCHO ACOSTA / MONEY CHICHA</a></iframe>",
     "description": "Cumbia is a language, not a genre. On one side, Pancho Acosta takes Jonathan Richman's catchy 'Egyptian Reggae' and turns it into a fun, upbeat cumbia track with a lively beat and lots of accordion flair. Flip it over, and Austin's Money Chicha puts their own spin on Acosta's 'Carnaval de Jujuy', with electric guitars and deep basslines that make you want to move."
   },
-  "archive": [
     {
     "date": "2025-04-03",
     "title": "Ayo Ke Disco: Boogie, Pop & Funk from the South China Sea (1974-88)",
